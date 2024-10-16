@@ -6,9 +6,7 @@
 
 int main() {
 	screen_clear();
-	printf("Hello, World!\n");
-	usleep(1000000);
-	screen_clear();
-	printf("Goodbye, World!\n");
+	draw_cube();
+	printf("\x1b[%d;%dH", SCREEN_HEIGHT, 0);
 	return 0;
 }
