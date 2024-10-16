@@ -11,11 +11,3 @@ void screen_clear() {
 	printf("\x1b[H");
 }
 
-int main() {
-	screen_clear();
-	printf("Hello, World!\n");
-	usleep(1000000);
-	screen_clear();
-	printf("Goodbye, World!\n");
-	return 0;
-}

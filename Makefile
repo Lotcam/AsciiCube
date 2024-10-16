@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall
-SRC = src/main.c
+SRC = src/asciigl.c src/utils.c
 OBJ = $(SRC:.c=.o)
 TARGET = build/asciigl
 
