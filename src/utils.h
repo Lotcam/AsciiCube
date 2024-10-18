@@ -12,10 +12,10 @@ typedef struct {
 typedef struct {
 	float x, y;
 } Point2D;
-
 Point3D rotate_y(Point3D point, float angle);
 Point3D rotate_x(Point3D point, float angle);
 Point3D rotate_z(Point3D point, float angle);
+void set_character(char c);
 void draw_line_direct(int x0, int y0, int x1, int y1);
 void draw_cube_edges(Point2D *vertices);
 void rotate_cube(float angle_x, float angle_y, float angle_z);

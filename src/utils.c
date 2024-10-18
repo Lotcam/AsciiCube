@@ -5,6 +5,11 @@
 #include <unistd.h>
 #include "utils.h"
 
+char character = '#';
+
+void set_character(char c) {
+	character = c;
+}
 
 Point3D cube_vertices[] = {
 	{-1, -1, -1},
@@ -55,44 +60,43 @@ void rotate_cube(float angle_x, float angle_y, float angle_z) {
 }
 
 void draw_line_direct(int x0, int y0, int x1, int y1) {
-    int dx = abs(x1 - x0);
-    int dy = abs(y1 - y0);
-    int sx = (x0 < x1) ? 1 : -1;
-    int sy = (y0 < y1) ? 1 : -1;
-    int err = dx - dy;
+	int dx = abs(x1 - x0);
+	int dy = abs(y1 - y0);
+	int sx = (x0 < x1) ? 1 : -1;
+	int sy = (y0 < y1) ? 1 : -1;
+	int err = dx - dy;
+	while (1) {
+        	if (x0 >= 0 && x0 < SCREEN_WIDTH && y0 >= 0 && y0 < SCREEN_HEIGHT) {
+            		printf("\x1b[%d;%dH%c", y0 + 1, x0 + 1, character);  // Move cursor and draw
+        	}
 
-    while (1) {
-        if (x0 >= 0 && x0 < SCREEN_WIDTH && y0 >= 0 && y0 < SCREEN_HEIGHT) {
-            printf("\x1b[%d;%dH#", y0 + 1, x0 + 1);  // Move cursor and draw
-        }
+        	if (x0 == x1 && y0 == y1) break;
 
-        if (x0 == x1 && y0 == y1) break;
-
-        int e2 = 2 * err;
-        if (e2 > -dy) {
-            err -= dy;
-            x0 += sx;
-        }
-        if (e2 < dx) {
-            err += dx;
-            y0 += sy;
-        }
-    }
+        	int e2 = 2 * err;
+        	if (e2 > -dy) {
+            		err -= dy;
+            		x0 += sx;
+        	}
+        	if (e2 < dx) {
+            		err += dx;
+            		y0 += sy;
+        	}
+    	}
 }
 
 void draw_cube_edges(Point2D cube_vertices_2D[8]) {
-    int cube_edges[12][2] = {
-        {0, 1}, {1, 2}, {2, 3}, {3, 0}, // Back face
-        {4, 5}, {5, 6}, {6, 7}, {7, 4}, // Front face
-        {0, 4}, {1, 5}, {2, 6}, {3, 7}  // Connecting edges
-    };
+	int cube_edges[12][2] = {
+       		{0, 1}, {1, 2}, {2, 3}, {3, 0}, // Back face
+       		{4, 5}, {5, 6}, {6, 7}, {7, 4}, // Front face
+		{0, 4}, {1, 5}, {2, 6}, {3, 7}  // Connecting edges
+	};
 
-    for (int i = 0; i < 12; i++) {
-        int start = cube_edges[i][0];
-        int end = cube_edges[i][1];
-        draw_line_direct(cube_vertices_2D[start].x, cube_vertices_2D[start].y, 
-                         cube_vertices_2D[end].x, cube_vertices_2D[end].y);
-    }
+	for (int i = 0; i < 12; i++) {
+		int start = cube_edges[i][0];
+		int end = cube_edges[i][1];
+		draw_line_direct(cube_vertices_2D[start].x, cube_vertices_2D[start].y, 
+				 cube_vertices_2D[end].x, cube_vertices_2D[end].y);
+	    }
 }
 
 void screen_clear() {
