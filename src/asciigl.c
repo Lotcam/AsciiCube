@@ -16,7 +16,6 @@ void parse_args(int argc, char *argv[]) {
 int main(int argc, char *argv[]) {
 	parse_args(argc, argv);
 	float angle = 0.0;
-	int i = 0;
 	while (1) {	
         	screen_clear();
 		rotate_cube(angle, angle, angle);
