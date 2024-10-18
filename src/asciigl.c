@@ -5,8 +5,16 @@
 #include "utils.h"
 
 int main() {
-	screen_clear();
-	draw_cube();
-	printf("\x1b[%d;%dH", SCREEN_HEIGHT, 0);
+	float angle = 0.0;
+	int i = 0;
+	while (1) {	
+        	screen_clear();
+		rotate_cube(angle, angle, angle);
+        	draw_cube();
+		fflush(stdout);
+        	angle += 0.1;
+        	usleep(200000); 
+        	printf("\x1b[%d;%dH", SCREEN_HEIGHT, 0);
+	}
 	return 0;
 }
