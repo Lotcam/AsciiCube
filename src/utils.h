@@ -1,8 +1,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#define SCREEN_WIDTH 180 
-#define SCREEN_HEIGHT 60
+#define SCREEN_WIDTH 40 
+#define SCREEN_HEIGHT 40
 
 
 typedef struct {
