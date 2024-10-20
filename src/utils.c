@@ -107,8 +107,8 @@ void screen_clear() {
 void project_3D_to_2D(Point3D point3D, Point2D *point2D) {
 	float distance = 5.0;
 	float factor = distance / (distance + point3D.z);
-	point2D->x = (int)(point3D.x * factor * 5) + (SCREEN_WIDTH / 2.0);
-	point2D->y = (int)(point3D.y * factor * 5) + (SCREEN_HEIGHT / 2.0);
+	point2D->x = (int)(point3D.x * factor * 10) + (SCREEN_WIDTH / 2.0);
+	point2D->y = (int)(point3D.y * factor * 10) + (SCREEN_HEIGHT / 2.0);
 }
 
 void draw_cube() {

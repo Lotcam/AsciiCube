@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
         	draw_cube();
 		fflush(stdout);
         	angle += 0.1;
-        	usleep(200000); 
+        	usleep(100000); 
         	printf("\x1b[%d;%dH", SCREEN_HEIGHT, 0);
 	}
 	return 0;
