@@ -9,7 +9,7 @@ cd AsciiCube
 make all
 ./build/asciicube
 ```
-You can also run the program with the `-c` flad to change the character used to draw the cube:
+You can also run the program with the `-c` flag to change the character used to draw the cube:
 ```bash
 ./build/asciicube -c '@'
 ```
